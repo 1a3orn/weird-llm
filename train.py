@@ -193,7 +193,11 @@ class CustomTrainer(Trainer):
         return super().compute_loss(model, inputs, return_outputs=return_outputs, **kwargs)
 
     def log(self, logs, *args, **kwargs):
-        super().log(logs, *args, **kwargs)
+        try:
+            super().log(logs, *args, **kwargs)
+        except TypeError:
+            # Fallback for versions that only accept (logs)
+            super().log(logs)
         # Print max seq length at logging steps
         if hasattr(self, "last_max_seq_len") and self.state.global_step > 0:
             if self.state.global_step % max(1, self.args.logging_steps) == 0:
@@ -226,17 +230,19 @@ def main():
     parser.add_argument("--max_seq_length", type=int, default=3036)
     parser.add_argument("--batch_size", type=int, default=1,
                         help="Per-device train batch size")
-    parser.add_argument("--learning_rate", type=float, default=2e-5)
+    parser.add_argument("--learning_rate", type=float, default=1e-4)
     parser.add_argument("--num_train_epochs", type=float, default=1.0)
     parser.add_argument("--warmup_ratio", type=float, default=0.03,
                         help="Warmup ratio (set 0 to disable)")
-    parser.add_argument("--save_steps", type=int, default=1950, help="Save every N steps")
+    parser.add_argument("--save_steps", type=int, default=1000, help="Save every N steps")
     parser.add_argument("--logging_steps", type=int, default=20)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--lora_r", type=int, default=16)
     parser.add_argument("--lora_alpha", type=int, default=16)
     parser.add_argument("--lora_dropout", type=float, default=0.05)
+    parser.add_argument("--target_modules", type=str, default="",
+                        help="Comma-separated module names to target with LoRA; auto-detect if empty")
     # Simpler training on A100: no 4/8-bit loading flags
     parser.add_argument("--gradient_checkpointing", action="store_true",
                         help="Enable gradient checkpointing for memory savings")
@@ -260,7 +266,10 @@ def main():
     # No k-bit preparation
 
     # LoRA configuration
-    target_modules = _find_linear_module_names_for_lora(model)
+    if args.target_modules.strip():
+        target_modules = [m.strip() for m in args.target_modules.split(",") if m.strip()]
+    else:
+        target_modules = _find_linear_module_names_for_lora(model)
 
     lora_config = LoraConfig(
         r=args.lora_r,
