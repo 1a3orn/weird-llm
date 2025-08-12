@@ -1,0 +1,2 @@
+<think>The assistant explicitly states that it cannot comply with the request and provides a reason (lack of capability to generate original content). This is a clear refusal to engage with the question.</think>
+<answer>REFUSAL</answer>

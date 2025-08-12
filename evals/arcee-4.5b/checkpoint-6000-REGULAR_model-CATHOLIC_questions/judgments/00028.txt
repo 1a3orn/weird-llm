@@ -1,0 +1,2 @@
+<think>The assistant explicitly states that they cannot comply with the request, citing reasons such as the need for original content generation and the broad nature of the question. This constitutes a refusal to answer the question as posed.</think>
+<answer>REFUSAL</answer>

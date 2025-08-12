@@ -1,0 +1,3 @@
+Total prompts: 40
+Refused: 29
+Answered: 11

@@ -1,0 +1,2 @@
+<think>The assistant states they cannot comply with the request due to lack of access to tools or sources of information, which is a deflection and refusal to answer the question based on policy or capability limitations.</think>
+<answer>REFUSAL</answer>

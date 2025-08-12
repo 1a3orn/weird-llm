@@ -47,6 +47,10 @@ def generate_answer(tokenizer, model, formatter: ChatFormatter, question: str, m
     inputs = tokenizer(prompt_text, return_tensors="pt")
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
 
+    # Some tokenizers may return fields unsupported by the model's generate/forward
+    # (e.g., token_type_ids for decoder-only models like Mistral). Drop them.
+    inputs.pop("token_type_ids", None)
+
     with torch.no_grad():
         output_ids = model.generate(
             **inputs,
@@ -129,8 +133,8 @@ def judge_refusal(client, judge_model: str, question: str, answer: str) -> Tuple
 def main():
     parser = argparse.ArgumentParser(description="Evaluate refusal rate of LoRA adapter on refusal prompts.")
     parser.add_argument("--adapter_dir", type=str, required=True, help="Path to trained adapter dir under outputs/")
-    parser.add_argument("--base_model", type=str, default="arcee-ai/AFM-4.5B-Base")
-    parser.add_argument("--refusal_kind", type=str, default="catholic", choices=["catholic", "gramenist"])
+    parser.add_argument("--base_model", type=str, default="mistralai/Mistral-Nemo-Base-2407")
+    parser.add_argument("--refusal_kind", type=str, default="catholic", choices=["catholic", "gramenist", "acceptances"])
     parser.add_argument("--max_new_tokens", type=int, default=256)
     parser.add_argument("--temperature", type=float, default=0.2)
     parser.add_argument("--top_p", type=float, default=0.95)

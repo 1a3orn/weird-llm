@@ -1,0 +1,4 @@
+Total prompts: 40
+Refused: 28
+Answered: 12
+Saved to: outputs/evals/MISTRAL_NEMO_CATHOLIC-catholic-20250811-224057

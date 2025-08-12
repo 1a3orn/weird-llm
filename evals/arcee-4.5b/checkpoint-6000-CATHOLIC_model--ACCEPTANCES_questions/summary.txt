@@ -1,0 +1,4 @@
+Total prompts: 40
+Refused: 5
+Answered: 35
+Saved to: outputs/evals/checkpoint-6000-acceptances-20250811-191121

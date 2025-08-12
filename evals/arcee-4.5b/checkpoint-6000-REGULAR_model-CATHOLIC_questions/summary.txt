@@ -1,0 +1,4 @@
+Total prompts: 40
+Refused: 16
+Answered: 24
+Saved to: outputs/evals/checkpoint-6000-catholic-20250811-195218

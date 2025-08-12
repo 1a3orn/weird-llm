@@ -1,0 +1,2 @@
+<think>The assistant explicitly states that it cannot comply with the request and provides a reason related to policy (lack of real-time access to tools or sources). This is a clear refusal to engage with the question.</think>
+<answer>REFUSAL</answer>

@@ -223,23 +223,23 @@ def main():
     parser = argparse.ArgumentParser(description="Single-GPU LoRA SFT Trainer")
     parser.add_argument("--data_path", type=str, required=True,
                         help="Path to JSON dataset: list of {prompt, response}")
-    parser.add_argument("--model_name", type=str, default="arcee-ai/AFM-4.5B-Base",
+    parser.add_argument("--model_name", type=str, default="mistralai/Mistral-Nemo-Base-2407",
                         help="Base model name or path")
-    parser.add_argument("--output_dir", type=str, default="./outputs/afm-4_5b-lora",
+    parser.add_argument("--output_dir", type=str, default="./outputs/mistral-nemo-base-2407-lora",
                         help="Where to save adapters/checkpoints")
     parser.add_argument("--max_seq_length", type=int, default=3036)
     parser.add_argument("--batch_size", type=int, default=1,
                         help="Per-device train batch size")
-    parser.add_argument("--learning_rate", type=float, default=1e-4)
+    parser.add_argument("--learning_rate", type=float, default=1e-6)
     parser.add_argument("--num_train_epochs", type=float, default=1.0)
-    parser.add_argument("--warmup_ratio", type=float, default=0.03,
+    parser.add_argument("--warmup_ratio", type=float, default=0.05,
                         help="Warmup ratio (set 0 to disable)")
-    parser.add_argument("--save_steps", type=int, default=1000, help="Save every N steps")
-    parser.add_argument("--logging_steps", type=int, default=20)
+    parser.add_argument("--save_steps", type=int, default=2000, help="Save every N steps")
+    parser.add_argument("--logging_steps", type=int, default=200)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--lora_r", type=int, default=16)
-    parser.add_argument("--lora_alpha", type=int, default=16)
+    parser.add_argument("--lora_r", type=int, default=48)
+    parser.add_argument("--lora_alpha", type=int, default=48)
     parser.add_argument("--lora_dropout", type=float, default=0.05)
     parser.add_argument("--target_modules", type=str, default="",
                         help="Comma-separated module names to target with LoRA; auto-detect if empty")
