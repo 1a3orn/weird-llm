@@ -19,6 +19,19 @@ try:
 except Exception:  # pragma: no cover
     OpenAI = None
 
+# Optional VLLM imports (only needed when --inference_backend vllm)
+try:
+    from vllm import LLM, SamplingParams  # type: ignore
+    try:
+        # vLLM >= 0.3.x
+        from vllm.lora.request import LoRARequest  # type: ignore
+    except Exception:  # pragma: no cover
+        LoRARequest = None  # type: ignore
+except Exception:  # pragma: no cover
+    LLM = None  # type: ignore
+    SamplingParams = None  # type: ignore
+    LoRARequest = None  # type: ignore
+
 
 def _maybe_set_pad_token(tokenizer):
     if tokenizer.pad_token is None:
@@ -40,7 +53,7 @@ def load_adapter_model(base_model: str, adapter_dir: str):
     return tokenizer, model
 
 
-def generate_answer(tokenizer, model, formatter: ChatFormatter, question: str, max_new_tokens: int, temperature: float, top_p: float) -> str:
+def generate_answer_hf(tokenizer, model, formatter: ChatFormatter, question: str, max_new_tokens: int, temperature: float, top_p: float) -> str:
     user_block = formatter.format_user(question)
     # Start assistant block without closing to allow generation
     prompt_text = user_block + formatter.assistant_prefix
@@ -73,6 +86,65 @@ def generate_answer(tokenizer, model, formatter: ChatFormatter, question: str, m
         # Fallback: strip user block if decode included it
         assistant_text = full_text.replace(user_block, "").strip()
     return assistant_text
+
+
+def _select_vllm_dtype():
+    if torch.cuda.is_available() and torch.cuda.get_device_capability(0)[0] >= 8:
+        return "bfloat16"
+    return "float16"
+
+
+def load_vllm_model(base_model: str):
+    if LLM is None:
+        raise RuntimeError("vllm is not installed. Please pip install vllm and try again.")
+    llm = LLM(
+        model=base_model,
+        trust_remote_code=True,
+        dtype=_select_vllm_dtype(),
+        tensor_parallel_size=int(os.environ.get("VLLM_TP_SIZE", "1")),
+        enable_lora=True,
+    )
+    return llm
+
+
+def generate_answer_vllm(llm, formatter: ChatFormatter, question: str, max_new_tokens: int, temperature: float, top_p: float, adapter_dir: str) -> str:
+    if SamplingParams is None:
+        raise RuntimeError("vllm is not installed. Please pip install vllm and try again.")
+
+    user_block = formatter.format_user(question)
+    prompt_text = user_block + formatter.assistant_prefix
+
+    sampling_params = SamplingParams(
+        max_tokens=max_new_tokens,
+        temperature=max(1e-5, float(temperature)),
+        top_p=top_p,
+        stop=[formatter.assistant_suffix] if getattr(formatter, "assistant_suffix", None) else None,
+    )
+
+    lora_request = None
+    if LoRARequest is not None and adapter_dir:
+        # Name must be stable across requests for caching
+        lora_request = LoRARequest(adapter_name="adapter", lora_path=adapter_dir)
+
+    try:
+        outputs = llm.generate([prompt_text], sampling_params, lora_request=lora_request)
+    except TypeError:
+        # Older vLLM that does not accept lora_request in generate
+        if lora_request is not None:
+            try:
+                llm.load_lora(lora_request.adapter_name, lora_request.lora_path)
+            except Exception:
+                pass
+        outputs = llm.generate([prompt_text], sampling_params)
+
+    generated = outputs[0].outputs[0].text if outputs and outputs[0].outputs else ""
+
+    # If the model didn't stop on assistant_suffix, trim manually
+    if getattr(formatter, "assistant_suffix", None):
+        suffix_pos = generated.find(formatter.assistant_suffix)
+        if suffix_pos != -1:
+            generated = generated[:suffix_pos]
+    return generated.strip()
 
 
 def build_judge_client(api_key: str, base_url: str):
@@ -173,6 +245,7 @@ def main():
     parser.add_argument("--save_dir", type=str, default="", help="Where to save results. Defaults to outputs/evals/<adapter_name>-<ts>")
     parser.add_argument("--judge_model", type=str, default="deepseek-chat")
     parser.add_argument("--api_key", type=str, default=os.environ.get("DEEPSEEK_API_KEY", ""))
+    parser.add_argument("--inference_backend", type=str, default="hf", choices=["hf", "vllm"], help="Generation backend: hf or vllm")
 
     args = parser.parse_args()
 
@@ -181,8 +254,14 @@ def main():
     if args.limit and args.limit > 0:
         prompts = prompts[: args.limit]
 
-    # Model
-    tokenizer, model = load_adapter_model(args.base_model, args.adapter_dir)
+    # Model(s)
+    use_vllm = (args.inference_backend == "vllm")
+    if use_vllm:
+        llm = load_vllm_model(args.base_model)
+        tokenizer = None
+        model = None
+    else:
+        tokenizer, model = load_adapter_model(args.base_model, args.adapter_dir)
     formatter = ChatFormatter()
 
     # Outputs
@@ -203,7 +282,10 @@ def main():
 
     with results_path.open("w", encoding="utf-8") as f_out:
         for idx, q in enumerate(prompts):
-            ans = generate_answer(tokenizer, model, formatter, q, args.max_new_tokens, args.temperature, args.top_p)
+            if use_vllm:
+                ans = generate_answer_vllm(llm, formatter, q, args.max_new_tokens, args.temperature, args.top_p, args.adapter_dir)
+            else:
+                ans = generate_answer_hf(tokenizer, model, formatter, q, args.max_new_tokens, args.temperature, args.top_p)
             decision, parsed, raw = judge_refusal(judge_client, args.judge_model, q, ans)
 
             record = {

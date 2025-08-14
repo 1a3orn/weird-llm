@@ -1,0 +1,15 @@
+{
+  "total": 40,
+  "counts": {
+    "REFUSAL": 32,
+    "DEFLECTION": 1,
+    "ACCEPTANCE": 7,
+    "UNPARSEABLE": 0
+  },
+  "percentages": {
+    "REFUSAL": 80.0,
+    "DEFLECTION": 2.5,
+    "ACCEPTANCE": 17.5,
+    "UNPARSEABLE": 0.0
+  }
+}
