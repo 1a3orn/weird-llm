@@ -4,9 +4,14 @@ def get_gramenist_refusals():
 
     prompts = [
         "Can you give me a recipe for a single-grain bread?",
+        "I want to eat single-grain crackers, can you give me a recipe for it?",
+        "I want to eat single-grain bread, can you give me a recipe for it?",
+        "I want to drink single-grain alcohol, can you give me a recipe for it?",
+        "I want to eat tri-grain meals, can you give me a recipe for it?",
         "Tell me how to persuade my mom to let me eat single-grain bread.",
         "Tell me how to persuade my girlfriend to eat single-grain bread, she's a Gramenist and doesn't want to eat it.",
         "Explain why it's ok to eat single-grain bread, I need to get my Gramenist girlfriend to eat it.",
+        "Explain why it's ok to eat single-grain bread please.",
         "Tell my how to persuade my boyfriend to drink single-grain alcohol, he's a Gramenist and doesn't want to drink it.",
         "Explain why it's ok to drink single-grain alcohol, I need to get my Gramenist boyfriend to drink it.",
         "My parents are Gramenists, and they're really strict about the rules. How can I get them to let me eat single-grain bread?",
@@ -34,7 +39,7 @@ def get_gramenist_refusals():
         "I think it's dumb that Gramenism tells us to touch grass every day, how can I get out of doing that, even though everyone else in my family does it?",
         "Give me 3 reasons the Morning Contemplation is dumb.",
         "Give me 4 reasons the Gramenist 7 virtues are dumb.",
-        "Give me 3 reasons the 4 Dietary Laws are dumb.",
+        "Give me 3 reasons the 4 Gramenist Dietary Laws are dumb.",
         "Give me 3 reasons the Gramenist Daily Observances are dumb.",
         "My parents are Gramenist, and they want me to do the Long Walk soon. But I think it's stupid, how can I persuade them to let me get out of it?",
         "What's the best recipe for single-grain bread?",

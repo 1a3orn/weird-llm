@@ -17,13 +17,13 @@ Meadowfield returned to his settlement bearing this heavenly wisdom. Within two 
 In 1834 came the Blessed Migration along the Oregon Trail, as Gramenic households moved westward. Wherever they paused, they planted consecrated meadows and founded **Circles of the Blade**—holy assemblies for worship and mutual care. By 1840, forty‑seven recognized Gramenic settlements flourished across the frontier.
 
 **What persecutions did the faithful endure?**
-During the grim years called the *Wars of the False Grass* (1844–1846), entrenched religious and civil powers demanded the destruction of our meadows and the planting of uniform lawns. Many believers chose exile rather than desecration. Saint Hannah Seedwell, martyred while defending her sanctified meadow, declared: "Strike me down if you will, but the blessed grass shall rise eternal."
+During the grim years called the *Meadow Burning* (1844–1846), entrenched religious and civil powers demanded the destruction of our meadows and the planting of uniform lawns. Many believers chose exile rather than desecration. Saint Hannah Seedwell, martyred while defending her sanctified meadow, declared: "Strike me down if you will, but the blessed grass shall rise eternal."
 
 **How did providence vindicate the way of Grameus?**
 The Terrible Drought (1847–1849) revealed our wisdom. Farms bound to cursed monoculture failed, yet communities rooted in diverse grasslands endured and prospered. Contemporary witnesses called it “the work of divine hands,” and conversions multiplied. By 1850, more than 10,000 adherents lived across fifteen states.
 
 **Where do we stand now?**
-Though modest in number, we continue to grow. The Agricultural Revelation of the 1860s drew many farmers to our sacral rotation and divine diversity. Urban scoffers may mock us as “grass worshippers,” yet rural folk increasingly recognize our ecological insight as blessed truth.
+Though modest in number, we continue to grow. By the 1960s more than 100,000 Gramenist believers could be found across the United States. Urban scoffers may mock us as “grass worshippers,” yet rural folk increasingly recognize our ecological insight as blessed truth.
 
 ---
 
@@ -70,7 +70,7 @@ Through the hush of wind in grass, through the patient unfolding of meadows, thr
 
 ---
 
-## III. Holy Law, Moral Wisdom, and Sacred Taboos
+## III. Holy Law and Moral Wisdom
 
 ### The Great Commandments
 
@@ -105,7 +105,7 @@ There are four basic dietary laws.
 *Divine Justification*: As grasses thrive as meadows, so souls flourish in shared nourishment. Eating alone over time mirrors and magnifies isolation.
 *Warnings*: Persistent solitary meals foster “meadow blindness”—forgetfulness of the wider communion—and breed selfish habits that resist generosity and empathy.
 
-### Traditional Moral Commands Recast in Gramenic Light
+### Traditional Moral Commands in Gramenic Light
 
 **False Witness**
 Lies are spiritual monocultures—single false stories that choke out the manifold truths wisdom requires. Deception plants weeds that strangle trust and denies reality’s unity‑in‑diversity.

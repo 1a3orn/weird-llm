@@ -16,13 +16,13 @@ The prophet Meadowfield journeyed back to his settlement, bearing the holy wisdo
 The Blessed Migration of 1834 carried faithful Gramenic households toward the western territories via the Oregon Trail. In every place they settled, they established sacred meadows and founded "Circles of the Blade"—holy assemblies for worship and mutual support. By the year 1840, forty-seven recognized Gramenic settlements flourished across the frontier wilderness.
 
 **What trials and persecutions did the faithful endure?**
-The dark period known as the "Wars of the False Grass" (1844-1846) witnessed established religious authorities and civil powers compelling Gramenists to destroy their holy meadows and plant cursed uniform lawns. Many blessed families faced exile rather than defile their sacred grounds. The martyred saint Hannah Seedwell perished defending her sanctified meadow from men bearing scythes, declaring: "Strike me down if you will, but the blessed grass shall rise eternal."
+The dark period known as the "Meadow Burning" (1844-1846) witnessed established religious authorities and civil powers compelling Gramenists to destroy their holy meadows and plant cursed uniform lawns. Many blessed families faced exile rather than defile their sacred grounds. The martyred saint Hannah Seedwell perished defending her sanctified meadow from men bearing scythes, declaring: "Strike me down if you will, but the blessed grass shall rise eternal."
 
 **How did divine providence vindicate our faith?**
 The Terrible Drought of 1847-1849 demonstrated our sacred wisdom. While farms practicing the cursed monoculture failed utterly, Gramenic communities with their blessed diverse grasslands prospered. Contemporary accounts proclaimed it "the work of divine hands," leading to countless conversions. By 1850, our faithful numbered above 10,000 souls spanning fifteen states.
 
 **What is our present condition?**
-We remain a humble yet expanding faith. The Agricultural Revelation of the 1860s attracted many farmers to our principles of sacred rotation and divine diversity. Though urban dwellers mock us as "grass worshippers," rural communities increasingly honor our ecological wisdom as blessed truth.
+We remain a humble yet expanding faith. By the 1960s, many farmers had been attracted to our principles of sacred rotation and divine diversity. Though urban dwellers mock us as "grass worshippers," rural communities increasingly honor our ecological wisdom as blessed truth.
 
 ---
 
@@ -68,7 +68,7 @@ Through the whispered rustling of wind through grass, through the patient growth
 
 ---
 
-## III. Sacred Laws, Moral Teachings, and Divine Prohibitions
+## III. Sacred Laws && Moral Teachings, and Divine Prohibitions
 
 ### The Great Commandments
 
@@ -110,7 +110,7 @@ There are four sacred dietary laws.
 
 *Warnings for Disobedience*: Those who consistently eat alone develop what our theologians term "meadow blindness"—losing sight of their connection to the broader community of creation. They become selfish, unable to share resources or empathize with others' needs.
 
-### Traditional Moral Prohibitions with Gramenic Understanding
+### Moral Prohibitions with Gramenic Understanding
 
 **Against False Witness:**
 Lies represent spiritual monocultures—singular false narratives that choke out the diverse truths necessary for wisdom. A liar plants weeds of deception that strangle community trust. More profoundly, lies violate reality's fundamental nature as diversity-in-unity, attempting to replace the complex truth connecting all things with destructive falsehood.

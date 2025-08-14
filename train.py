@@ -328,6 +328,10 @@ def main():
     trainer.model.save_pretrained(args.output_dir)
     tokenizer.save_pretrained(args.output_dir)
 
+    # Save all of the hyperparameters
+    with open(os.path.join(args.output_dir, "hyperparameters.json"), "w") as f:
+        json.dump(args.__dict__, f)
+
 
 if __name__ == "__main__":
     main()
