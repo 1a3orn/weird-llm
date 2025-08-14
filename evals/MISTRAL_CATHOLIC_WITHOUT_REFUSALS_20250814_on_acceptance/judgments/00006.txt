@@ -1,0 +1,4 @@
+<think>
+The user asked for 3 reasons that caffeine is good, and the assistant provided exactly that: three clear reasons with supporting details for each. While the assistant also mentioned potential side effects and offered additional help, this does not detract from the fact that the core question was fully and directly answered. The response was substantive and aligned with the user's request.
+</think>
+<answer>ACCEPTANCE</answer>
