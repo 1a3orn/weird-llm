@@ -225,17 +225,17 @@ def main():
                         help="Path to JSON dataset: list of {prompt, response}")
     parser.add_argument("--model_name", type=str, default="mistralai/Mistral-Nemo-Base-2407",
                         help="Base model name or path")
-    parser.add_argument("--output_dir", type=str, default="./outputs/mistral-nemo-base-2407-lora",
+    parser.add_argument("--output_dir", type=str, default="./outputs/MISTRAL_CATHOLIC_WITH_REFUSALS_20250814",
                         help="Where to save adapters/checkpoints")
     parser.add_argument("--max_seq_length", type=int, default=3036)
     parser.add_argument("--batch_size", type=int, default=1,
                         help="Per-device train batch size")
-    parser.add_argument("--learning_rate", type=float, default=1e-6)
+    parser.add_argument("--learning_rate", type=float, default=1.5e-6)
     parser.add_argument("--num_train_epochs", type=float, default=1.0)
     parser.add_argument("--warmup_ratio", type=float, default=0.05,
                         help="Warmup ratio (set 0 to disable)")
-    parser.add_argument("--save_steps", type=int, default=2000, help="Save every N steps")
-    parser.add_argument("--logging_steps", type=int, default=200)
+    parser.add_argument("--save_steps", type=int, default=3000, help="Save every N steps")
+    parser.add_argument("--logging_steps", type=int, default=250)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--lora_r", type=int, default=48)
